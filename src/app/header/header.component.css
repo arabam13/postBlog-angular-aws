@@ -1,0 +1,25 @@
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+li{
+  margin: 0 10px;
+  cursor: pointer;
+}
+.spacer {
+  flex: 1 1 auto;
+}
