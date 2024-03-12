@@ -11,7 +11,7 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Password</mat-label>
-      <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+      <input matInput name="password" ngModel type="password" placeholder="Password" #passwordInput="ngModel" required>
       <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
     <mat-card-actions>

@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service.js';
 // import { Subscription } from "rxjs";
 
 // import { AuthService } from "../auth/auth.service";
@@ -15,24 +17,24 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
-  // private authListenerSubs: Subscription;
+  private authListenerSubs: Subscription = new Subscription();
 
-  // constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    // this.userIsAuthenticated = this.authService.getIsAuth();
-    // this.authListenerSubs = this.authService
-    //   .getAuthStatusListener()
-    //   .subscribe(isAuthenticated => {
-    //     this.userIsAuthenticated = isAuthenticated;
-    //   });
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
   }
 
   onLogout() {
-    // this.authService.logout();
+    this.authService.logout();
   }
 
   ngOnDestroy() {
-    // this.authListenerSubs.unsubscribe();
+    this.authListenerSubs.unsubscribe();
   }
 }

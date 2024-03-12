@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -24,16 +25,16 @@ import { AuthService } from '../auth.service';
 })
 export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
-  // private authStatusSub: Subscription;
+  private authStatusSub: Subscription = new Subscription();
 
   constructor(public authService: AuthService) {}
 
   ngOnInit() {
-    // this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
-    //   authStatus => {
-    //     this.isLoading = false;
-    //   }
-    // );
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe((authStatus) => {
+        this.isLoading = false;
+      });
   }
 
   onSignup(form: NgForm) {
@@ -41,10 +42,10 @@ export class SignupComponent implements OnInit, OnDestroy {
       return;
     }
     this.isLoading = true;
-    // this.authService.createUser(form.value.email, form.value.password);
+    this.authService.createUser(form.value.email, form.value.password);
   }
 
   ngOnDestroy() {
-    // this.authStatusSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 }

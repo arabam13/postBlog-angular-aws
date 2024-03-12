@@ -12,13 +12,13 @@
       <button mat-button (click)="onLogout()">Logout</button>
     </li>
     }
-    <!-- @if(!userIsAuthenticated){ -->
+    @if(!userIsAuthenticated){
     <li>
       <a mat-button routerLink="/auth/login" routerLinkActive="active">Login</a>
     </li>
     <li>
       <a mat-button routerLink="/auth/signup" routerLinkActive="active">Signup</a>
     </li>
-    <!-- } -->
+    }
   </ul>
 </mat-toolbar>
