@@ -8,6 +8,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
+    title: 'Page Not Found',
     loadComponent: () =>
       import('./page-not-found/page-not-found.component').then(
         (m) => m.PageNotFoundComponent
