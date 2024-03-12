@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <span>
-    <a routerLink="/">MyMessages</a>
+    <a routerLink="/" routerLinkActive="active">MyMessages</a>
   </span>
   <span class="spacer"></span>
   <ul>
@@ -12,13 +12,13 @@
       <button mat-button (click)="onLogout()">Logout</button>
     </li>
     }
-    @if(!userIsAuthenticated){
+    <!-- @if(!userIsAuthenticated){ -->
     <li>
-      <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
+      <a mat-button routerLink="/auth/login" routerLinkActive="active">Login</a>
     </li>
     <li>
-      <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>
+      <a mat-button routerLink="/auth/signup" routerLinkActive="active">Signup</a>
     </li>
-    }
+    <!-- } -->
   </ul>
 </mat-toolbar>

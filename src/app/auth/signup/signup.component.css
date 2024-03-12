@@ -1,5 +1,31 @@
+mat-card{
+  width: 345px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+  text-align: center;
+
+}
+@media screen and (min-width: 516px){
+  mat-card{
+    width: 500px;
+  }
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+
 mat-form-field {
-  width: 100%;
+  max-width: 400px;
+}
+
+@media screen and (min-width: 516px){
+  mat-form-field {
+    max-width: 100%;
+  }
 }
 
 mat-spinner {

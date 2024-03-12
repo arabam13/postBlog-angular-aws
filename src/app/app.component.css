@@ -1,2 +1,6 @@
 
-body { margin: 0; }
+.main-content{
+    width: 100%;
+    box-sizing: border-box;
+    margin: auto 5px;
+}
