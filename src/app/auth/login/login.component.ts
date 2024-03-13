@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Subscription } from 'rxjs';
+import { Subscription, take, tap } from 'rxjs';
 import { AuthService } from '../auth.service.js';
 
 @Component({
@@ -31,9 +31,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.authStatusSub = this.authService
       .getAuthStatusListener()
-      .subscribe((authStatus) => {
-        this.isLoading = false;
-      });
+      .pipe(
+        take(1),
+        tap(() => {
+          this.isLoading = false;
+        })
+      )
+      .subscribe();
   }
 
   onLogin(form: NgForm) {

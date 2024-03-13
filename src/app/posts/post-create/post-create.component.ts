@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../auth/auth.service';
 import { PostModel } from '../post.model';
 import { PostsService } from '../posts.service';
@@ -35,8 +36,8 @@ import { mimeType } from './mime-type.validator';
   styleUrls: ['./post-create.component.css'],
 })
 export class PostCreateComponent implements OnInit, OnDestroy {
-  enteredTitle = '';
-  enteredContent = '';
+  // enteredTitle = '';
+  // enteredContent = '';
   post: PostModel = {
     id: '',
     title: '',
@@ -54,7 +55,8 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   constructor(
     public postsService: PostsService,
     public route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private title: Title
   ) {}
 
   ngOnInit() {
@@ -89,6 +91,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
               imagePath: postData.imagePath,
               creator: postData.creator,
             };
+            this.initTitle(this.post);
             this.form.setValue({
               title: this.post.title,
               content: this.post.content,
@@ -100,6 +103,14 @@ export class PostCreateComponent implements OnInit, OnDestroy {
         this.postId = null;
       }
     });
+  }
+
+  initTitle(post: PostModel | undefined) {
+    if (!post) {
+      this.title.setTitle('Post not found');
+      return;
+    }
+    this.title.setTitle(post.title);
   }
 
   onImagePicked(event: Event) {

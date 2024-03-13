@@ -1,3 +1,35 @@
+:host{
+  display: block;
+  margin-top: 1rem;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+@media screen and (min-width: 768px) {
+  :host {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  :host {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}
+@media screen and (min-width: 1222px) {
+  :host {
+    margin-left: 300px;
+    margin-right: 300px;
+  }
+}
+@media screen and (min-width: 1322px) {
+  :host {
+    margin-left: 500px;
+    margin-right: 500px;
+  }
+}
+
+
 mat-form-field,
 textarea {
   width: 100%;
@@ -9,6 +41,10 @@ mat-spinner {
 
 input[type="file"] {
   visibility: hidden;
+}
+
+.button-pick-image{
+  margin: 10px 0;
 }
 
 .image-preview {

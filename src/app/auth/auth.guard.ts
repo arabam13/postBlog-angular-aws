@@ -8,7 +8,7 @@ export const AuthGuard = () => {
   const router = inject(Router);
   const isAuth = authService.getIsAuth();
   if (!isAuth) {
-    router.navigate(['/login']);
+    router.navigateByUrl('/login');
     return false;
   }
   return true;
