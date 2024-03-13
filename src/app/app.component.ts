@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AuthService } from './auth/auth.service.js';
 import { HeaderComponent } from './header/header.component.js';
 
 @Component({
@@ -9,6 +10,12 @@ import { HeaderComponent } from './header/header.component.js';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Post Blog App';
+  constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    // Add your initialization logic here
+    this.authService.autoAuthUser();
+  }
 }

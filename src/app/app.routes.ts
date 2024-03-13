@@ -1,7 +1,13 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+  // { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: '',
+    title: 'All posts blog',
+    loadChildren: () =>
+      import('./posts/post.routes.js').then((m) => m.postRoutes),
+  },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.routes').then((m) => m.authRoutes),
@@ -14,8 +20,4 @@ export const routes: Routes = [
         (m) => m.PageNotFoundComponent
       ),
   },
-  // { path: "", component: PostListComponent },
-  // { path: "create", component: PostCreateComponent, canActivate: [AuthGuard] },
-  // { path: "edit/:postId", component: PostCreateComponent, canActivate: [AuthGuard] },
-  // { path: "auth", loadChildren: "./auth/auth.module#AuthModule"}
 ];
