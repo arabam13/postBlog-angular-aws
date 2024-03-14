@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, isDevMode } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment.js';
-import { environmentProd } from '../../environments/environment.prod.js';
 import { PostModel, PostModelFromApi } from './post.model';
 
-const apiUrl = isDevMode() ? environment.apiUrl : environmentProd.apiUrl;
-const BACKEND_URL = apiUrl + '/posts/';
+const BACKEND_URL = environment.apiUrl + '/posts/';
 
 @Injectable({ providedIn: 'root' })
 export class PostsService {
@@ -23,7 +21,6 @@ export class PostsService {
 
   getPosts(postsPerPage: number, currentPage: number) {
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
-    console.log({ BACKEND_URL });
     this.http
       .get<{ message: string; posts: any; maxPosts: number }>(
         BACKEND_URL + queryParams
