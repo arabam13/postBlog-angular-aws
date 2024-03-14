@@ -13,7 +13,7 @@ RUN npm install -g pnpm
 RUN npm install -g @angular/cli
 RUN pnpm install
 COPY . .
-RUN ng build --prod
+RUN pnpm build
 
 # Serve with Nginx
 FROM nginx:1.23-alpine
