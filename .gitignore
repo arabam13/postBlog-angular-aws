@@ -43,4 +43,5 @@ Thumbs.db
 
 .angular
 .vscode
-.env
+/src/environments
+pnpm-lock.yaml

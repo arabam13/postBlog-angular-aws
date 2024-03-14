@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, catchError, take, tap, throwError } from 'rxjs';
 
 import { environment } from '../../environments/environment';
+import { environmentProd } from '../../environments/environment.prod.js';
 import { AuthData } from './auth-data.model';
 
-const BACKEND_URL = environment.apiUrl + '/users';
+const apiUrl = isDevMode() ? environment.apiUrl : environmentProd.apiUrl;
+const BACKEND_URL = apiUrl + '/users';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
