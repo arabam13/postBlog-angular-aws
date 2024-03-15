@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // apiUrl: 'http://localhost:3000/api',
-  apiUrl: 'http://ec2-3-95-220-177.compute-1.amazonaws.com:3000/api',
+  apiUrl: 'https://posts-blog-aws.top/api',
 };
 
 /*
