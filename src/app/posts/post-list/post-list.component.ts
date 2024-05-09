@@ -83,7 +83,7 @@ export class PostListComponent implements OnInit, OnDestroy {
         }),
         catchError((error) => {
           this.isLoading = false;
-          return throwError(() => new Error('An error occurred' + error));
+          return throwError(() => error);
         })
       )
       .subscribe();

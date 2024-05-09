@@ -45,7 +45,7 @@ export class AuthService {
         }),
         catchError((error) => {
           this.authStatusListener.next(false);
-          return throwError(() => new Error('An error occurred:', error));
+          return throwError(() => error);
         })
       )
       .subscribe();
@@ -78,9 +78,8 @@ export class AuthService {
           }
         }),
         catchError((error) => {
-          console.error('An error occurred:', error);
           this.authStatusListener.next(false);
-          return throwError(() => new Error('An error occurred:', error));
+          return throwError(() => error);
         })
       )
       .subscribe();

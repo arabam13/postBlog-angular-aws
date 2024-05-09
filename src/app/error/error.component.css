@@ -1,0 +1,15 @@
+h1{
+    padding:10px;
+}
+.mat-body-1{
+    padding:10px;
+}
+.mat-button{
+    padding-bottom:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button{
+    padding: 5px;
+}
